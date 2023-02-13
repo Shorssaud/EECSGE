@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.0.0)
-project(EECSGE VERSION 0.1.0)
+project(eecgse VERSION 0.1.0)
 
 include(CTest)
 enable_testing()
@@ -37,9 +37,9 @@ FetchContent_Declare(GTEST
     GIT_TAG v1.13.x)
 FetchContent_MakeAvailable(GTEST)
 
-add_library(EECSGE STATIC ${SRCS} ${SYSTEMS} ${INCLUDES})
+add_library(eecgse STATIC ${SRCS} ${SYSTEMS} ${INCLUDES})
 
-target_link_libraries(EECSGE sfml-audio sfml-graphics sfml-system sfml-window gtest gtest_main)
+target_link_libraries(eecgse sfml-audio sfml-graphics sfml-system sfml-window gtest gtest_main)
 
 
 IF(test AND test STREQUAL "on")
