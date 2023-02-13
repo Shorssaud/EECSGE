@@ -27,14 +27,15 @@ set(SYSTEMS
     src/systems/src/sound.cpp
 )
 
-set(SFML_STATIC_LIBRARIES TRUE)
-
-if (SFML_FOUND)
-  message(STATUS "SFML found")
-else()
-  add_subdirectory(lib/sfml)
-endif()
-add_subdirectory(lib/googletest)
+include(FetchContent)
+FetchContent_Declare(SFML
+    GIT_REPOSITORY https://github.com/SFML/SFML.git
+    GIT_TAG 2.5.x)
+FetchContent_MakeAvailable(SFML)
+FetchContent_Declare(GTEST
+    GIT_REPOSITORY https://github.com/google/googletest
+    GIT_TAG v1.13.x)
+FetchContent_MakeAvailable(GTEST)
 
 add_library(EECSGE ${SRCS} ${SYSTEMS} ${INCLUDES})
 

@@ -20,7 +20,7 @@ void CollisionSystem::Update(float dt)
             auto drawable2 = gCoordinator.GetComponent<Drawable>(entity2);
             sf::FloatRect drawableBounds1 = drawable1.sprite.getGlobalBounds();
             sf::FloatRect drawableBounds2 = drawable2.sprite.getGlobalBounds();
-            if (drawableBounds1.findIntersection(drawableBounds2)) {
+            if (drawableBounds1.intersects(drawableBounds2)) {
                 auto health1 = gCoordinator.GetComponent<Health>(entity1);
                 auto health2 = gCoordinator.GetComponent<Health>(entity2);
                 health1.health -= 1;
