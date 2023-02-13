@@ -4,6 +4,8 @@ project(EECSGE VERSION 0.1.0)
 include(CTest)
 enable_testing()
 
+set(SFML_DIR ${CMAKE_CURRENT_SOURCE_DIR}/lib/sfml)
+
 include_directories(
     ${CMAKE_CURRENT_SOURCE_DIR}/src)
 
@@ -26,10 +28,13 @@ set(SYSTEMS
 )
 
 set(SFML_STATIC_LIBRARIES TRUE)
-add_subdirectory(lib/sfml)
 
+if (SFML_FOUND)
+  message(STATUS "SFML found")
+else()
+  add_subdirectory(lib/sfml)
+endif()
 add_subdirectory(lib/googletest)
-
 
 add_library(EECSGE ${SRCS} ${SYSTEMS} ${INCLUDES})
 
