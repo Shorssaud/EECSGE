@@ -5,6 +5,7 @@ include(CTest)
 enable_testing()
 
 include_directories(.)
+
 set(SRCS
     EECSGE/core/src/ComponentManager.cpp
     EECSGE/core/src/Coordinator.cpp
@@ -56,7 +57,7 @@ IF(test AND test STREQUAL "on")
 
     add_executable(runUnitTests ${TEST_SRC_FILES})
     
-    target_link_libraries(runUnitTests gtest gtest_main sfml-audio sfml-graphics sfml-system sfml-window)
+    target_link_libraries(runUnitTests gtest gtest_main sfml-audio sfml-graphics sfml-system sfml-window eecsge)
 
     add_test(UnitTests runUnitTests)
 
