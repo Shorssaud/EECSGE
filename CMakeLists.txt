@@ -6,25 +6,11 @@ enable_testing()
 
 include_directories(.)
 
-set(COMPONENTS
-    EECSGE/components/collision.hpp
-    EECSGE/components/drawable.hpp
-    EECSGE/components/health.hpp
-    EECSGE/components/input.hpp
-    EECSGE/components/movement.hpp
-    EECSGE/components/sound.hpp
-    EECSGE/components/transform.hpp
-)
-
 set(SRCS
     EECSGE/core/src/ComponentManager.cpp
     EECSGE/core/src/Coordinator.cpp
     EECSGE/core/src/EntityManager.cpp
     EECSGE/core/src/SystemManager.cpp
-    EECSGE/core/include/ComponentManager.hpp
-    EECSGE/core/include/Coordinator.hpp
-    EECSGE/core/include/EntityManager.hpp
-    EECSGE/core/include/SystemManager.hpp
 )
 
 set(SYSTEMS
@@ -36,14 +22,6 @@ set(SYSTEMS
     EECSGE/systems/src/movement.cpp
     EECSGE/systems/src/player.cpp
     EECSGE/systems/src/sound.cpp
-    EECSGE/systems/include/animation.hpp
-    EECSGE/systems/include/background.hpp
-    EECSGE/systems/include/collision.hpp
-    EECSGE/systems/include/death.hpp
-    EECSGE/systems/include/drawable.hpp
-    EECSGE/systems/include/movement.hpp
-    EECSGE/systems/include/player.hpp
-    EECSGE/systems/include/sound.hpp
 )
 
 include(FetchContent)
@@ -56,12 +34,15 @@ FetchContent_Declare(GTEST
     GIT_TAG v1.13.x)
 FetchContent_MakeAvailable(GTEST)
 
-add_library(eecsge STATIC ${SRCS} ${SYSTEMS} ${COMPONENTS})
+add_library(eecsge STATIC ${SRCS} ${SYSTEMS})
 
 target_link_libraries(eecsge sfml-audio sfml-graphics sfml-system sfml-window gtest gtest_main)
 
 target_include_directories(eecsge PUBLIC
   $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>
+  PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/EECSGE/core/include
+  ${CMAKE_CURRENT_SOURCE_DIR}/EECSGE/systems/include
+  ${CMAKE_CURRENT_SOURCE_DIR}/EECSGE/components
 )
 
 IF(test AND test STREQUAL "on")
