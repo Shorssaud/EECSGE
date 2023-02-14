@@ -7,10 +7,10 @@ enable_testing()
 include_directories(.)
 
 set(SRCS
-    EECSGE/core/src/ComponentManager.cpp
-    EECSGE/core/src/Coordinator.cpp
-    EECSGE/core/src/EntityManager.cpp
-    EECSGE/core/src/SystemManager.cpp
+    EECSGE/core/include/ComponentManager.hpp
+    EECSGE/core/include/Coordinator.hpp
+    EECSGE/core/include/EntityManager.hpp
+    EECSGE/core/include/SystemManager.hpp
 )
 
 set(SYSTEMS
@@ -41,8 +41,8 @@ target_link_libraries(eecsge sfml-audio sfml-graphics sfml-system sfml-window gt
 target_include_directories(eecsge PUBLIC
   $<BUILD_INTERFACE:${${CMAKE_CURRENT_SOURCE_DIR}}>
   PRIVATE ${${CMAKE_CURRENT_SOURCE_DIR}}/EECSGE/core/include
-  ${${CMAKE_CURRENT_SOURCE_DIR}}/EECSGE/systems/include
-  ${${CMAKE_CURRENT_SOURCE_DIR}}/EECSGE/components
+  ${CMAKE_CURRENT_SOURCE_DIR}/EECSGE/systems/include
+  ${CMAKE_CURRENT_SOURCE_DIR}/EECSGE/components
 )
 
 IF(test AND test STREQUAL "on")

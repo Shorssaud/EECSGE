@@ -11,18 +11,56 @@ class SystemManager
 {
 public:
 	template<typename T>
-	// Register a system and return a shared pointer to it
-	std::shared_ptr<T> RegisterSystem();
+	std::shared_ptr<T> RegisterSystem()
+	{
+		const char* typeName = typeid(T).name();
+
+		assert(mSystems.find(typeName) == mSystems.end() && "Registering system more than once.");
+
+		auto system = std::make_shared<T>();
+		mSystems.insert({typeName, system});
+		return system;
+	}
 
 	template<typename T>
-	// Set the signature for a system
-	void SetSignature(Signature signature);
+	void SetSignature(Signature signature)
+	{
+		const char* typeName = typeid(T).name();
 
-	// Notify each system that an entity has been destroyed
-	void EntityDestroyed(Entity entity);
+		assert(mSystems.find(typeName) != mSystems.end() && "System used before registered.");
 
-	// Notify each system that an entity's signature changed
-	void EntitySignatureChanged(Entity entity, Signature entitySignature);
+		mSignatures.insert({typeName, signature});
+	}
+
+	void EntityDestroyed(Entity entity)
+	{
+		for (auto const& pair : mSystems)
+		{
+			auto const& system = pair.second;
+
+
+			system->mEntities.erase(entity);
+		}
+	}
+
+	void EntitySignatureChanged(Entity entity, Signature entitySignature)
+	{
+		for (auto const& pair : mSystems)
+		{
+			auto const& type = pair.first;
+			auto const& system = pair.second;
+			auto const& systemSignature = mSignatures[type];
+
+			if ((entitySignature & systemSignature) == systemSignature)
+			{
+				system->mEntities.insert(entity);
+			}
+			else
+			{
+				system->mEntities.erase(entity);
+			}
+		}
+	}
 
 private:
 	std::unordered_map<const char*, Signature> mSignatures{};

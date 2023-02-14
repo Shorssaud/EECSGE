@@ -1,29 +1,57 @@
 #pragma once
+#include "Types.hpp"
 #include <array>
 #include <cassert>
 #include <queue>
-#include "Types.hpp"
+
 
 class EntityManager
 {
 public:
-	EntityManager();
+	EntityManager()
+	{
+		for (Entity entity = 0; entity < MAX_ENTITIES; ++entity)
+		{
+			mAvailableEntities.push(entity);
+		}
+	}
 
-	Entity CreateEntity();
+	Entity CreateEntity()
+	{
+		assert(mLivingEntityCount < MAX_ENTITIES && "Too many entities in existence.");
 
-	void DestroyEntity(Entity entity);
+		Entity id = mAvailableEntities.front();
+		mAvailableEntities.pop();
+		++mLivingEntityCount;
 
-	void SetSignature(Entity entity, Signature signature);
+		return id;
+	}
 
-	Signature GetSignature(Entity entity);
+	void DestroyEntity(Entity entity)
+	{
+		assert(entity < MAX_ENTITIES && "Entity out of range.");
+
+		mSignatures[entity].reset();
+		mAvailableEntities.push(entity);
+		--mLivingEntityCount;
+	}
+
+	void SetSignature(Entity entity, Signature signature)
+	{
+		assert(entity < MAX_ENTITIES && "Entity out of range.");
+
+		mSignatures[entity] = signature;
+	}
+
+	Signature GetSignature(Entity entity)
+	{
+		assert(entity < MAX_ENTITIES && "Entity out of range.");
+
+		return mSignatures[entity];
+	}
 
 private:
-	// Queue of unused entity IDs
 	std::queue<Entity> mAvailableEntities{};
-
-	// Array of signatures where the index corresponds to the entity ID
 	std::array<Signature, MAX_ENTITIES> mSignatures{};
-
-	// Total living entities - used to keep limits on how many exist
 	uint32_t mLivingEntityCount{};
 };
