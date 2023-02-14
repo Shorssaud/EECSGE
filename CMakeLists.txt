@@ -9,11 +9,25 @@ set(SFML_DIR ${CMAKE_CURRENT_SOURCE_DIR}/lib/sfml)
 include_directories(
     ${CMAKE_CURRENT_SOURCE_DIR}/src)
 
+set(COMPONENTS
+    src/components/collision.hpp
+    src/components/drawable.hpp
+    src/components/health.hpp
+    src/components/input.hpp
+    src/components/movement.hpp
+    src/components/sound.hpp
+    src/components/transform.hpp
+)
+
 set(SRCS
     src/core/src/ComponentManager.cpp
     src/core/src/Coordinator.cpp
     src/core/src/EntityManager.cpp
     src/core/src/SystemManager.cpp
+    src/core/include/ComponentManager.hpp
+    src/core/include/Coordinator.hpp
+    src/core/include/EntityManager.hpp
+    src/core/include/SystemManager.hpp
 )
 
 set(SYSTEMS
@@ -25,6 +39,17 @@ set(SYSTEMS
     src/systems/src/movement.cpp
     src/systems/src/player.cpp
     src/systems/src/sound.cpp
+
+    src/systems/include/animation.hpp
+    src/systems/include/background.hpp
+    src/systems/include/collision.hpp
+    src/systems/include/death.hpp
+    src/systems/include/drawable.hpp
+    src/systems/include/movement.hpp
+    src/systems/include/player.hpp
+    src/systems/include/sound.hpp
+
+
 )
 
 include(FetchContent)
@@ -37,7 +62,7 @@ FetchContent_Declare(GTEST
     GIT_TAG v1.13.x)
 FetchContent_MakeAvailable(GTEST)
 
-add_library(eecsge SHARED ${SRCS} ${SYSTEMS} )
+add_library(eecsge SHARED ${SRCS} ${SYSTEMS} ${COMPONENTS}  )
 
 target_link_libraries(eecsge sfml-audio sfml-graphics sfml-system sfml-window gtest gtest_main)
 
