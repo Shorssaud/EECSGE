@@ -39,10 +39,10 @@ add_library(eecsge STATIC ${SRCS} ${SYSTEMS})
 target_link_libraries(eecsge sfml-audio sfml-graphics sfml-system sfml-window gtest gtest_main)
 
 target_include_directories(eecsge PUBLIC
-  $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>
-  PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/EECSGE/core/include
-  ${CMAKE_CURRENT_SOURCE_DIR}/EECSGE/systems/include
-  ${CMAKE_CURRENT_SOURCE_DIR}/EECSGE/components
+  $<BUILD_INTERFACE:${${CMAKE_CURRENT_SOURCE_DIR}}>
+  PRIVATE ${${CMAKE_CURRENT_SOURCE_DIR}}/EECSGE/core/include
+  ${${CMAKE_CURRENT_SOURCE_DIR}}/EECSGE/systems/include
+  ${${CMAKE_CURRENT_SOURCE_DIR}}/EECSGE/components
 )
 
 IF(test AND test STREQUAL "on")
