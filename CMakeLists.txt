@@ -37,7 +37,7 @@ FetchContent_Declare(GTEST
     GIT_TAG v1.13.x)
 FetchContent_MakeAvailable(GTEST)
 
-add_library(eecsge STATIC ${SRCS} ${SYSTEMS} ${INCLUDES})
+add_library(eecsge SHARED ${SRCS} ${SYSTEMS} )
 
 target_link_libraries(eecsge sfml-audio sfml-graphics sfml-system sfml-window gtest gtest_main)
 
