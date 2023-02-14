@@ -1,8 +1,8 @@
-#include "systems/include/drawable.hpp"
-#include "core/include/Coordinator.hpp"
-#include "components/drawable.hpp"
-#include "components/transform.hpp"
-#include "components/movement.hpp"
+#include "EECSGE/systems/include/drawable.hpp"
+#include "EECSGE/core/include/Coordinator.hpp"
+#include "EECSGE/components/drawable.hpp"
+#include "EECSGE/components/transform.hpp"
+#include "EECSGE/components/movement.hpp"
 
 extern Coordinator gCoordinator;
 

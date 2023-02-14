@@ -1,6 +1,6 @@
-#include "systems/include/sound.hpp"
-#include "components/sound.hpp"
-#include "core/include/Coordinator.hpp"
+#include "EECSGE/systems/include/sound.hpp"
+#include "EECSGE/components/sound.hpp"
+#include "EECSGE/core/include/Coordinator.hpp"
 extern Coordinator gCoordinator;
 
 void SoundSystem::playsounds() {

@@ -1,4 +1,4 @@
-#include "core/include/EntityManager.hpp"
+#include "EECSGE/core/include/EntityManager.hpp"
 
 EntityManager::EntityManager()
 {

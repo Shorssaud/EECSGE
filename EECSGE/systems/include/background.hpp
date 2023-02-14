@@ -10,11 +10,11 @@
 #include <SFML/Window.hpp>
 #include <SFML/Graphics.hpp>
 #include <SFML/System.hpp>
-#include "core/include/Types.hpp"
-#include "core/include/System.hpp"
-#include "components/drawable.hpp"
-#include "components/transform.hpp"
-#include "core/include/Coordinator.hpp"
+#include "EECSGE/core/include/Types.hpp"
+#include "EECSGE/core/include/System.hpp"
+#include "EECSGE/components/drawable.hpp"
+#include "EECSGE/components/transform.hpp"
+#include "EECSGE/core/include/Coordinator.hpp"
 
 class BackgroundSystem : public System
 {

@@ -1,4 +1,4 @@
-#include "core/include/Coordinator.hpp"
+#include "EECSGE/core/include/Coordinator.hpp"
 
 void Coordinator::Init()
 {

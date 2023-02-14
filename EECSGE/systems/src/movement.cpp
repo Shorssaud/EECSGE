@@ -1,7 +1,7 @@
-#include "systems/include/movement.hpp"
-#include "core/include/Coordinator.hpp"
-#include "components/movement.hpp"
-#include "components/transform.hpp"
+#include "EECSGE/systems/include/movement.hpp"
+#include "EECSGE/core/include/Coordinator.hpp"
+#include "EECSGE/components/movement.hpp"
+#include "EECSGE/components/transform.hpp"
 extern Coordinator gCoordinator;
 
 void MovementSystem::Update() {

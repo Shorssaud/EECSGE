@@ -1,5 +1,5 @@
-#include "systems/include/death.hpp"
-#include "core/include/Coordinator.hpp"
+#include "EECSGE/systems/include/death.hpp"
+#include "EECSGE/core/include/Coordinator.hpp"
 
 extern Coordinator gCoordinator;
 

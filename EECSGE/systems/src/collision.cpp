@@ -1,8 +1,8 @@
-#include "systems/include/collision.hpp"
-#include "core/include/Coordinator.hpp"
-#include "components/collision.hpp"
-#include "components/drawable.hpp"
-#include "components/health.hpp"
+#include "EECSGE/systems/include/collision.hpp"
+#include "EECSGE/core/include/Coordinator.hpp"
+#include "EECSGE/components/collision.hpp"
+#include "EECSGE/components/drawable.hpp"
+#include "EECSGE/components/health.hpp"
 
 extern Coordinator gCoordinator;
 

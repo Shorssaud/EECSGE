@@ -5,14 +5,14 @@
 ** player_system.cpp
 */
 
-#include "core/include/Coordinator.hpp"
-#include "systems/include/player.hpp"
-#include "components/input.hpp"
-#include "components/transform.hpp"
-#include "components/drawable.hpp"
-#include "components/movement.hpp"
-#include "components/collision.hpp"
-#include "components/health.hpp"
+#include "EECSGE/core/include/Coordinator.hpp"
+#include "EECSGE/systems/include/player.hpp"
+#include "EECSGE/components/input.hpp"
+#include "EECSGE/components/transform.hpp"
+#include "EECSGE/components/drawable.hpp"
+#include "EECSGE/components/movement.hpp"
+#include "EECSGE/components/collision.hpp"
+#include "EECSGE/components/health.hpp"
 
 extern Coordinator gCoordinator;
 

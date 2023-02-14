@@ -4,52 +4,23 @@ project(eecsge VERSION 0.1.0)
 include(CTest)
 enable_testing()
 
-set(SFML_DIR ${CMAKE_CURRENT_SOURCE_DIR}/lib/sfml)
-
-include_directories(
-    ${CMAKE_CURRENT_SOURCE_DIR}/src)
-
-set(COMPONENTS
-    src/components/collision.hpp
-    src/components/drawable.hpp
-    src/components/health.hpp
-    src/components/input.hpp
-    src/components/movement.hpp
-    src/components/sound.hpp
-    src/components/transform.hpp
-)
-
+include_directories(.)
 set(SRCS
-    src/core/src/ComponentManager.cpp
-    src/core/src/Coordinator.cpp
-    src/core/src/EntityManager.cpp
-    src/core/src/SystemManager.cpp
-    src/core/include/ComponentManager.hpp
-    src/core/include/Coordinator.hpp
-    src/core/include/EntityManager.hpp
-    src/core/include/SystemManager.hpp
+    EECSGE/core/src/ComponentManager.cpp
+    EECSGE/core/src/Coordinator.cpp
+    EECSGE/core/src/EntityManager.cpp
+    EECSGE/core/src/SystemManager.cpp
 )
 
 set(SYSTEMS
-    src/systems/src/animation.cpp
-    src/systems/src/background.cpp
-    src/systems/src/collision.cpp
-    src/systems/src/death.cpp
-    src/systems/src/drawable.cpp
-    src/systems/src/movement.cpp
-    src/systems/src/player.cpp
-    src/systems/src/sound.cpp
-
-    src/systems/include/animation.hpp
-    src/systems/include/background.hpp
-    src/systems/include/collision.hpp
-    src/systems/include/death.hpp
-    src/systems/include/drawable.hpp
-    src/systems/include/movement.hpp
-    src/systems/include/player.hpp
-    src/systems/include/sound.hpp
-
-
+    EECSGE/systems/src/animation.cpp
+    EECSGE/systems/src/background.cpp
+    EECSGE/systems/src/collision.cpp
+    EECSGE/systems/src/death.cpp
+    EECSGE/systems/src/drawable.cpp
+    EECSGE/systems/src/movement.cpp
+    EECSGE/systems/src/player.cpp
+    EECSGE/systems/src/sound.cpp
 )
 
 include(FetchContent)
@@ -62,10 +33,13 @@ FetchContent_Declare(GTEST
     GIT_TAG v1.13.x)
 FetchContent_MakeAvailable(GTEST)
 
-add_library(eecsge SHARED ${SRCS} ${SYSTEMS} ${COMPONENTS}  )
+add_library(eecsge SHARED ${SRCS} ${SYSTEMS} )
 
 target_link_libraries(eecsge sfml-audio sfml-graphics sfml-system sfml-window gtest gtest_main)
 
+target_include_directories(eecsge PUBLIC
+  $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>
+)
 
 IF(test AND test STREQUAL "on")
     message("Testing enabled")

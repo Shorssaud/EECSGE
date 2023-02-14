@@ -5,7 +5,7 @@
 ** background.cpp
 */
 
-#include "systems/include/background.hpp"
+#include "EECSGE/systems/include/background.hpp"
 
 extern Coordinator gCoordinator;
 

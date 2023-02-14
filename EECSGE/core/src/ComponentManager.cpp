@@ -1,4 +1,4 @@
-#include "core/include/ComponentManager.hpp"
+#include "EECSGE/core/include/ComponentManager.hpp"
 
 template <typename T>
 void ComponentManager::RegisterComponent()

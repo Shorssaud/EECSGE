@@ -1,4 +1,4 @@
-#include "core/include/SystemManager.hpp"
+#include "EECSGE/core/include/SystemManager.hpp"
 
 template <typename T>
 std::shared_ptr<T> SystemManager::RegisterSystem()

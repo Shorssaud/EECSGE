@@ -1,7 +1,7 @@
 #pragma once
 
-#include "core/include/System.hpp"
-#include "components/health.hpp"
+#include "EECSGE/core/include/System.hpp"
+#include "EECSGE/components/health.hpp"
 
 class DeathSystem : public System {
     public:

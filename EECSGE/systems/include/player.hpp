@@ -12,11 +12,11 @@
 #include <SFML/Window.hpp>
 #include <SFML/Graphics.hpp>
 #include <SFML/System.hpp>
-#include "core/include/System.hpp"
+#include "EECSGE/core/include/System.hpp"
 
-#include "components/input.hpp"
-#include "components/movement.hpp"
-#include "components/transform.hpp"
+#include "EECSGE/components/input.hpp"
+#include "EECSGE/components/movement.hpp"
+#include "EECSGE/components/transform.hpp"
 
 class PlayerSystem : public System {
     public:
