@@ -30,8 +30,11 @@ public:
 	template<typename T>
 	void RemoveComponent(Entity entity);
 
-	template<typename T>
-	T& GetComponent(Entity entity);
+	template <typename T>
+	T &GetComponent(Entity entity)
+	{
+		return mComponentManager->GetComponent<T>(entity);
+	}
 
 	template<typename T>
 	ComponentType GetComponentType();

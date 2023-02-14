@@ -54,12 +54,6 @@ void Coordinator::RemoveComponent(Entity entity)
 }
 
 template <typename T>
-T &Coordinator::GetComponent(Entity entity)
-{
-    return mComponentManager->GetComponent<T>(entity);
-}
-
-template <typename T>
 ComponentType Coordinator::GetComponentType()
 {
     return mComponentManager->GetComponentType<T>();
