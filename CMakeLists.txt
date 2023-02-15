@@ -10,7 +10,12 @@ set(SRCS
     EECSGE/core/include/ComponentManager.hpp
     EECSGE/core/include/Coordinator.hpp
     EECSGE/core/include/EntityManager.hpp
+    EECSGE/core/include/Event.hpp
+    EECSGE/core/include/EventManager.hpp
+    EECSGE/core/include/IComponentArray.hpp
+    EECSGE/core/include/System.hpp
     EECSGE/core/include/SystemManager.hpp
+    EECSGE/core/include/Types.hpp
 )
 
 set(SYSTEMS
@@ -24,6 +29,13 @@ set(SYSTEMS
     EECSGE/systems/src/sound.cpp
 )
 
+set(EVENTS
+    EECSGE/events/collision.hpp
+)
+
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+
 include(FetchContent)
 FetchContent_Declare(SFML
     GIT_REPOSITORY https://github.com/SFML/SFML.git
@@ -34,7 +46,9 @@ FetchContent_Declare(GTEST
     GIT_TAG v1.13.x)
 FetchContent_MakeAvailable(GTEST)
 
-add_library(eecsge STATIC ${SRCS} ${SYSTEMS})
+add_library(eecsge STATIC ${SRCS} ${SYSTEMS} ${EVENTS})
+
+set_target_properties(sfml-audio PROPERTIES CXX_STANDARD 98 CXX_STANDARD_REQUIRED YES CXX_EXTENSIONS NO)
 
 target_link_libraries(eecsge sfml-audio sfml-graphics sfml-system sfml-window gtest gtest_main)
 

@@ -3,6 +3,7 @@
 #include "ComponentManager.hpp"
 #include "EntityManager.hpp"
 #include "SystemManager.hpp"
+#include "EventManager.hpp"
 #include "Types.hpp"
 #include <memory>
 
@@ -95,4 +96,5 @@ private:
 	std::unique_ptr<ComponentManager> mComponentManager;
 	std::unique_ptr<EntityManager> mEntityManager;
 	std::unique_ptr<SystemManager> mSystemManager;
+	std::unique_ptr<EventManager> mEventManager;
 };
