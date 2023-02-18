@@ -95,9 +95,9 @@ public:
 	
 	// event methods
 	template<typename T>
-	void AddEventCallback(const std::function<void(T&)>& callback)
+	void AddListener(std::function<void(T&)> const& listener)
 	{
-		mEventManager->AddCallback<T>(callback);
+		mEventManager->AddListener<T>(listener);
 	}
 
 	template<typename T>
