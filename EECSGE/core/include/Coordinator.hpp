@@ -15,6 +15,7 @@ public:
 	{
 		mComponentManager = std::make_unique<ComponentManager>();
 		mEntityManager = std::make_unique<EntityManager>();
+		mEventManager = std::make_unique<EventManager>();
 		mSystemManager = std::make_unique<SystemManager>();
 	}
 
@@ -91,6 +92,20 @@ public:
 	{
 		mSystemManager->SetSignature<T>(signature);
 	}
+	
+	// event methods
+	template<typename T>
+	void AddEventCallback(const std::function<void(T&)>& callback)
+	{
+		mEventManager->AddCallback<T>(callback);
+	}
+
+	template<typename T>
+	void SendEvent(T& event)
+	{
+		mEventManager->SendEvent<T>(event);
+	}
+
 
 private:
 	std::unique_ptr<ComponentManager> mComponentManager;
