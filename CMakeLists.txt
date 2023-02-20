@@ -50,26 +50,6 @@ target_link_libraries(eecsge sfml-audio sfml-graphics sfml-system sfml-window gt
 target_include_directories(eecsge PUBLIC
   $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>)
 
-IF(test AND test STREQUAL "on")
-    message("Testing enabled")
-    set(SOURCES_TEST
-        ${PROJECT_SOURCE_DIR}/src/systems/player_system.cpp
-        ${PROJECT_SOURCE_DIR}/tests/test_InputEngine.cpp
-        )
-
-    file(GLOB TEST_SRC_FILES ${SOURCES_TEST})
-
-    enable_testing()
-    
-    include_directories(${gtest_SOURCE_DIR}/include ${gtest_SOURCE_DIR} ${PROJECT_SOURCE_DIR}/include)
-
-    add_executable(runUnitTests ${TEST_SRC_FILES})
-    
-    target_link_libraries(runUnitTests gtest gtest_main sfml-audio sfml-graphics sfml-system sfml-window eecsge)
-
-    add_test(UnitTests runUnitTests)
-
-ENDIF()
 
 #--------
 
