@@ -24,16 +24,11 @@ set(SRCS
 set(SYSTEMS
     EECSGE/systems/src/animation.cpp
     EECSGE/systems/src/background.cpp
-    EECSGE/systems/src/collision.cpp
     EECSGE/systems/src/death.cpp
     EECSGE/systems/src/drawable.cpp
     EECSGE/systems/src/movement.cpp
     EECSGE/systems/src/player.cpp
     EECSGE/systems/src/sound.cpp
-)
-
-set(EVENTS
-    EECSGE/events/collision.hpp
 )
 
 include(FetchContent)
