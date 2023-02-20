@@ -3,6 +3,7 @@
 #include "ComponentManager.hpp"
 #include "EntityManager.hpp"
 #include "SystemManager.hpp"
+#include "EventManager.hpp"
 #include "Types.hpp"
 #include <memory>
 
@@ -14,6 +15,7 @@ public:
 	{
 		mComponentManager = std::make_unique<ComponentManager>();
 		mEntityManager = std::make_unique<EntityManager>();
+		mEventManager = std::make_unique<EventManager>();
 		mSystemManager = std::make_unique<SystemManager>();
 	}
 
@@ -90,9 +92,27 @@ public:
 	{
 		mSystemManager->SetSignature<T>(signature);
 	}
+	
+	// event methods
+	void AddListener(EventId eventId, std::function<void(Event&)> const& listener)
+	{
+		mEventManager->AddListener(eventId, listener);
+	}
+
+	void SendEvent(Event& event)
+	{
+		mEventManager->SendEvent(event);
+	}
+
+	void SendEvent(EventId eventId)
+	{
+		mEventManager->SendEvent(eventId);
+	}
+
 
 private:
 	std::unique_ptr<ComponentManager> mComponentManager;
 	std::unique_ptr<EntityManager> mEntityManager;
 	std::unique_ptr<SystemManager> mSystemManager;
+	std::unique_ptr<EventManager> mEventManager;
 };
