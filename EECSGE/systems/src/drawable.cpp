@@ -14,6 +14,7 @@ void DrawSystem::DrawEntities(sf::RenderWindow *window)
 		auto& movement = gCoordinator.GetComponent<Movement>(entity);
 		auto& drawable = gCoordinator.GetComponent<Drawable>(entity);
 		drawable.sprite.setPosition(sf::Vector2f{transform.position.x + movement.velocity.x, transform.position.y + movement.velocity.y});
+		drawable.sprite.setTextureRect(drawable.rect);
 
 		window->draw(drawable.sprite);
 	}
