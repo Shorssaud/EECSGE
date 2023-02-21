@@ -35,6 +35,14 @@ public:
 		mSystemManager->EntityDestroyed(entity);
 	}
 
+	void ClearEntities()
+	{
+		for (auto i = 0u; i < mEntityManager->getLivingEntityCount(); i++)
+		{
+			DestroyEntity(i);
+		}
+	}
+
 
 	// Component methods
 	template<typename T>

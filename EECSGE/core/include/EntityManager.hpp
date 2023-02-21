@@ -27,6 +27,12 @@ public:
 		return id;
 	}
 
+	int getLivingEntityCount()
+	{
+		return mLivingEntityCount;
+	}
+
+
 	void DestroyEntity(Entity entity)
 	{
 		assert(entity < MAX_ENTITIES && "Entity out of range.");
