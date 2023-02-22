@@ -23,10 +23,7 @@ set(SRCS
 
 set(SYSTEMS
     EECSGE/systems/src/animation.cpp
-    EECSGE/systems/src/death.cpp
-    EECSGE/systems/src/drawable.cpp
-    EECSGE/systems/src/movement.cpp
-    EECSGE/systems/src/player.cpp
+    EECSGE/systems/src/draw.cpp
     EECSGE/systems/src/sound.cpp
 )
 
@@ -48,9 +45,9 @@ target_link_libraries(eecsge sfml-audio sfml-graphics sfml-system sfml-window gt
 
 target_include_directories(eecsge PUBLIC
   $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>)
-
-
 #--------
+
+add_subdirectory(tests)
 
 set(CPACK_PROJECT_NAME ${PROJECT_NAME})
 set(CPACK_PROJECT_VERSION ${PROJECT_VERSION})
