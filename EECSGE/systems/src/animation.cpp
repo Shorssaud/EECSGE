@@ -1,16 +1,12 @@
 #include "EECSGE/systems/include/animation.hpp"
 #include "EECSGE/core/include/Coordinator.hpp"
-#include "EECSGE/components/drawable.hpp"
-#include "EECSGE/components/transform.hpp"
-#include "EECSGE/components/movement.hpp"
+#include "EECSGE/components/rigidBody.hpp"
 extern Coordinator gCoordinator;
 
 void AnimationSystem::Update(void)
 {
 	for (auto const& entity : mEntities)
 	{
-		auto& transform = gCoordinator.GetComponent<Transform>(entity);
-		auto& movement = gCoordinator.GetComponent<Movement>(entity);
 		auto& drawable = gCoordinator.GetComponent<Drawable>(entity);
 
         if (drawable.isAnimated == false)
