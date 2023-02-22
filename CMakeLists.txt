@@ -32,10 +32,6 @@ FetchContent_Declare(SFML
     GIT_REPOSITORY https://github.com/SFML/SFML.git
     GIT_TAG 2.5.x)
 FetchContent_MakeAvailable(SFML)
-FetchContent_Declare(GTEST
-    GIT_REPOSITORY https://github.com/google/googletest
-    GIT_TAG v1.13.x)
-FetchContent_MakeAvailable(GTEST)
 
 add_library(eecsge STATIC ${SRCS} ${SYSTEMS} ${EVENTS})
 
@@ -46,8 +42,9 @@ target_link_libraries(eecsge sfml-audio sfml-graphics sfml-system sfml-window gt
 target_include_directories(eecsge PUBLIC
   $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>)
 #--------
-
-add_subdirectory(tests)
+IF(test AND test STREQUAL "on")
+    add_subdirectory(tests)
+ENDIF()
 
 set(CPACK_PROJECT_NAME ${PROJECT_NAME})
 set(CPACK_PROJECT_VERSION ${PROJECT_VERSION})
