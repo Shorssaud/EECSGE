@@ -23,7 +23,6 @@ set(SRCS
 
 set(SYSTEMS
     EECSGE/systems/src/animation.cpp
-    EECSGE/systems/src/background.cpp
     EECSGE/systems/src/death.cpp
     EECSGE/systems/src/drawable.cpp
     EECSGE/systems/src/movement.cpp
