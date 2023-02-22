@@ -15,9 +15,8 @@ include(CTest)
 enable_testing()
 
 set(SOURCES
-    main.cpp
+    system_tests.cpp
 )
-
 FetchContent_Declare(GTEST
     GIT_REPOSITORY https://github.com/google/googletest
     GIT_TAG v1.13.x)
@@ -25,7 +24,7 @@ FetchContent_MakeAvailable(GTEST)
 
 add_executable(etests ${SOURCES})
 
-target_link_libraries(etests gtest gtest_main eecsge)
+target_link_libraries(etests GTest::gtest_main eecsge)
 target_include_directories(eecsge PUBLIC
   $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>)
 
