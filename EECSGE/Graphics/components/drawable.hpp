@@ -10,5 +10,4 @@ struct Drawable
 	int rect_timer;
 	int rect_width;
 	int rect_frames;
-	bool isAnimated;
 };
