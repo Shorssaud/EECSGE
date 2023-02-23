@@ -1,0 +1,23 @@
+{
+    "configurations": [
+        {
+            "name": "Linux",
+            "includePath": [
+                "${workspaceFolder}/**",
+                "${workspaceFolder}/build/_deps/sfml-src/include",
+                "${workspaceFolder}/build/_deps/gtest-src/googletest/include",
+                "${workspaceFolder}",
+                "${workspaceFolder}",
+                "${workspaceFolder}/test/build/_deps/eecsge-src",
+                "${workspaceFolder}/test/build/_deps/eecsge-src"
+            ],
+            "defines": [],
+            "compilerPath": "/usr/bin/g++",
+            "cStandard": "c17",
+            "cppStandard": "c++14",
+            "intelliSenseMode": "linux-clang-x64",
+            "configurationProvider": "ms-vscode.cmake-tools"
+        }
+    ],
+    "version": 4
+}

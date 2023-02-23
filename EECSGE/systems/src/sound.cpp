@@ -1,0 +1,14 @@
+#include "EECSGE/systems/include/sound.hpp"
+#include "EECSGE/components/sound.hpp"
+#include "EECSGE/core/include/Coordinator.hpp"
+extern Coordinator gCoordinator;
+
+void SoundSystem::playsounds() {
+    for (auto entity : mEntities) {
+        auto& sound = gCoordinator.GetComponent<Sound>(entity);
+        if (sound.play) {
+            sound.play = false;
+            sound.sound.play();
+        }
+    }
+}
