@@ -1,4 +1,4 @@
-#include "Audio.hpp"
+#include "EECSGE/Audio.hpp"
 extern Coordinator gCoordinator;
 
 void SoundSystem::playsounds() {

@@ -24,8 +24,6 @@ FetchContent_MakeAvailable(GTEST)
 
 add_executable(etests ${SOURCES})
 
-target_link_libraries(etests GTest::gtest_main eecsge)
-target_include_directories(eecsge PUBLIC
-  $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>)
+target_link_libraries(etests GTest::gtest_main eecsge-audio eecsge-core eecsge-physics)
 
 add_test(UnitTests etests)

@@ -1,5 +1,5 @@
 #pragma once
-#include "Audio.hpp"
+#include "EECSGE/Audio.hpp"
 
 class SoundSystem : public System {
     public:

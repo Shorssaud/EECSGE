@@ -1,4 +1,4 @@
-#include "Graphics.hpp"
+#include "EECSGE/Graphics.hpp"
 
 extern Coordinator gCoordinator;
 

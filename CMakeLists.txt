@@ -31,10 +31,11 @@ FetchContent_Declare(SFML
     GIT_TAG 2.5.x)
 FetchContent_MakeAvailable(SFML)
 
+set(SFML_BUILD_NETWORK FALSE)
+
 add_subdirectory(EECSGE)
 
 #--------
 IF(test AND test STREQUAL "on")
-    target_link_libraries(eecsge gtest gtest_main)
     add_subdirectory(tests)
 ENDIF()

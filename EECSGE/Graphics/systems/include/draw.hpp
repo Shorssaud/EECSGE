@@ -1,7 +1,7 @@
 #pragma once
-#include "Core.hpp"
-#include "Physics.hpp"
-#include "Graphics.hpp"
+#include "EECSGE/Core.hpp"
+#include "EECSGE/Physics.hpp"
+#include "EECSGE/Graphics.hpp"
 #include <SFML/Graphics.hpp>
 
 class DrawSystem : public System {
