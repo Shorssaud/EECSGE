@@ -1,6 +1,5 @@
 #pragma once
-#include "EECSGE/components/sound.hpp"
-#include "EECSGE/core/include/System.hpp"
+#include "EECSGE/Audio.hpp"
 
 class SoundSystem : public System {
     public:

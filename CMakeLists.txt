@@ -4,28 +4,26 @@ project(eecsge VERSION 0.1.0)
 include(CTest)
 enable_testing()
 
+# macro to facilitate setting options
+macro(eecsge_set_option var default type docstring)
+    if(NOT DEFINED ${var})
+        set(${var} ${default})
+    endif()
+    set(${var} ${${var}} CACHE ${type} ${docstring} FORCE)
+endmacro()
+
+# set default modules to build
+eecsge_set_option(EECSGE_BUILD_PHYSICS TRUE BOOL "TRUE to build EECSGE's Physics module. This setting is ignored, if the graphics module is built.")
+eecsge_set_option(EECSGE_BUILD_GRAPHICS TRUE BOOL "TRUE to build EECSGE's Graphics module.")
+eecsge_set_option(EECSGE_BUILD_AUDIO TRUE BOOL "TRUE to build EECSGE's Audio module.")
+
+if(EECSGE_BUILD_GRAPHICS AND NOT EECSGE_BUILD_PHYSICS)
+    message(WARNING "You're trying to build EECSGE's PHYSICS module without the Graphics module. Forcing building of the Graphics module as a dependency.")
+    set(EECSGE_BUILD_PHYSICS TRUE)
+endif()
+
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
-
-include_directories(.)
-
-set(SRCS
-    EECSGE/core/include/ComponentManager.hpp
-    EECSGE/core/include/Coordinator.hpp
-    EECSGE/core/include/EntityManager.hpp
-    EECSGE/core/include/Event.hpp
-    EECSGE/core/include/EventManager.hpp
-    EECSGE/core/include/IComponentArray.hpp
-    EECSGE/core/include/System.hpp
-    EECSGE/core/include/SystemManager.hpp
-    EECSGE/core/include/Types.hpp
-)
-
-set(SYSTEMS
-    EECSGE/systems/src/animation.cpp
-    EECSGE/systems/src/draw.cpp
-    EECSGE/systems/src/sound.cpp
-)
 
 include(FetchContent)
 FetchContent_Declare(SFML
@@ -33,19 +31,12 @@ FetchContent_Declare(SFML
     GIT_TAG 2.5.x)
 FetchContent_MakeAvailable(SFML)
 
-add_library(eecsge STATIC ${SRCS} ${SYSTEMS} ${EVENTS})
+set(SFML_BUILD_NETWORK FALSE)
+set(SFML_BUILD_AUDIO FALSE)
 
-set_target_properties(sfml-audio PROPERTIES CXX_STANDARD 98 CXX_STANDARD_REQUIRED YES CXX_EXTENSIONS NO)
+add_subdirectory(EECSGE)
 
-target_link_libraries(eecsge sfml-audio sfml-graphics sfml-system sfml-window gtest gtest_main)
-
-target_include_directories(eecsge PUBLIC
-  $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>)
 #--------
 IF(test AND test STREQUAL "on")
     add_subdirectory(tests)
 ENDIF()
-
-set(CPACK_PROJECT_NAME ${PROJECT_NAME})
-set(CPACK_PROJECT_VERSION ${PROJECT_VERSION})
-include(CPack)

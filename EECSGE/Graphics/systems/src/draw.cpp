@@ -1,7 +1,4 @@
-#include "EECSGE/systems/include/draw.hpp"
-#include "EECSGE/core/include/Coordinator.hpp"
-#include "EECSGE/components/drawable.hpp"
-#include "EECSGE/components/rigidBody.hpp"
+#include "EECSGE/Graphics.hpp"
 
 extern Coordinator gCoordinator;
 
