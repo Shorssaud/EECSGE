@@ -1,6 +1,5 @@
-#include "EECSGE/systems/include/animation.hpp"
-#include "EECSGE/core/include/Coordinator.hpp"
-#include "EECSGE/components/rigidBody.hpp"
+#include "Graphics.hpp"
+
 extern Coordinator gCoordinator;
 
 void AnimationSystem::Update(void)
