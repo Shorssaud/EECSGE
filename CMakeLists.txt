@@ -32,6 +32,7 @@ FetchContent_Declare(SFML
 FetchContent_MakeAvailable(SFML)
 
 set(SFML_BUILD_NETWORK FALSE)
+set(SFML_BUILD_AUDIO FALSE)
 
 add_subdirectory(EECSGE)
 
