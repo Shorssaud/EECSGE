@@ -58,6 +58,7 @@ TEST(Animation, test_functional)
             player_rect_timer,
             player_rect_width,
             player_rect_frames,
+            true,
         });
     sf::RenderWindow win;
     win.create((sf::VideoMode){1280, 700}, "R-Type");

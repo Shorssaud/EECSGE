@@ -8,7 +8,7 @@ void AnimationSystem::Update(void)
 	{
 		auto& drawable = gCoordinator.GetComponent<Drawable>(entity);
 
-        if (drawable.rect_frames == 0)
+        if (!drawable.is_animated)
             return;
         if (drawable.rect.left < (drawable.rect_width * drawable.rect_frames)) {
             if (drawable.rect_clock.getElapsedTime().asMilliseconds() >= drawable.rect_timer) {
