@@ -9,5 +9,5 @@
 
 class AnimationSystem : public System {
     public:
-        void Update(void);
+        void Update();
 };

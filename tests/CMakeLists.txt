@@ -14,16 +14,20 @@ include(FetchContent)
 include(CTest)
 enable_testing()
 
-set(SOURCES
-    system_tests.cpp
-)
 FetchContent_Declare(GTEST
     GIT_REPOSITORY https://github.com/google/googletest
     GIT_TAG v1.13.x)
 FetchContent_MakeAvailable(GTEST)
 
-add_executable(etests ${SOURCES})
+add_executable(systemt system_tests.cpp)
 
-target_link_libraries(etests GTest::gtest_main eecsge-audio eecsge-core eecsge-physics)
+target_link_libraries(systemt GTest::gtest_main eecsge-audio eecsge-core eecsge-physics eecsge-graphics)
 
-add_test(UnitTests etests)
+add_executable(animationt animation_tests.cpp)
+
+target_link_libraries(animationt GTest::gtest_main eecsge-audio eecsge-core eecsge-physics eecsge-graphics)
+
+include(GoogleTest)
+
+gtest_discover_tests(systemt)
+gtest_discover_tests(animationt)

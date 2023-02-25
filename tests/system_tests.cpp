@@ -1,9 +1,10 @@
-#include <EECSGE/EECSGE.hpp>
+#include <EECSGE/Core.hpp>
+#include <EECSGE/Physics.hpp>
+#include <EECSGE/Graphics.hpp>
 #include <gtest/gtest.h>
 #include <vector>
 
 Coordinator gCoordinator;
-
 class PhysicsSystem : public System {
 public:
 	void Update(void) {
@@ -18,6 +19,7 @@ public:
 };
 
 TEST(Entities, MovementTest) {
+
     gCoordinator.Init();
 
 	gCoordinator.RegisterComponent<RigidBody>();
@@ -50,6 +52,8 @@ TEST(Entities, MovementTest) {
 }
 
 TEST(Entities, RemovalTest) {
+	Coordinator gCoordinator;
+    gCoordinator.Init();
 	std::vector<Entity> entities;
 	// add 6 entities to coordinator
 	for (int i = 0; i < 6; i++) {
