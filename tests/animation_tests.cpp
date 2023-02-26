@@ -10,6 +10,8 @@
 #include <gtest/gtest.h>
 #include <vector>
 
+using namespace eecsge;
+
 Coordinator gCoordinator;
 TEST(Animation, test_functional)
 {

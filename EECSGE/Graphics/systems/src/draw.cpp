@@ -1,5 +1,6 @@
 #include "EECSGE/Graphics.hpp"
 
+using namespace eecsge;
 extern Coordinator gCoordinator;
 
 void DrawSystem::DrawEntities(sf::RenderWindow *window)

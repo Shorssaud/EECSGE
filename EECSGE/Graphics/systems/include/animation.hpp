@@ -7,7 +7,9 @@
 #include "EECSGE/Core.hpp"
 #include "EECSGE/Graphics.hpp"
 
-class AnimationSystem : public System {
-    public:
-        void Update();
-};
+namespace eecsge {
+    class AnimationSystem : public System {
+        public:
+            void Update();
+    };
+}

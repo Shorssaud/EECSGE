@@ -3,12 +3,14 @@
 #include "Types.hpp"
 #include <set>
 
-
-class System
+namespace eecsge
 {
-public:
-	std::set<Entity> mEntities;
-};
+	class System
+	{
+	public:
+		std::set<Entity> mEntities;
+	};
+}
 
 // example system
 // for (auto const& entity : mEntities)

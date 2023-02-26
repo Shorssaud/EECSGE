@@ -4,6 +4,8 @@
 #include <gtest/gtest.h>
 #include <vector>
 
+using namespace eecsge;
+
 Coordinator gCoordinator;
 class PhysicsSystem : public System {
 public:

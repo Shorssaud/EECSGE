@@ -1,7 +1,9 @@
 #pragma once
 #include "EECSGE/Audio.hpp"
 
-class SoundSystem : public System {
-    public:
-        void playsounds();
-};
+namespace eecsge {
+    class SoundSystem : public System {
+        public:
+            void playsounds();
+    };
+}
