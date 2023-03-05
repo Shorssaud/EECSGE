@@ -3,7 +3,7 @@
 
 struct Drawable
 {
-	sf::Texture texture;
+	sf::Texture *texture;
 	sf::Sprite sprite;
 	sf::IntRect rect;
 	sf::Clock rect_clock;

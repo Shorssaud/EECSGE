@@ -48,7 +48,6 @@ TEST(Entities, MovementTest) {
 			false
 	});
 	while (gCoordinator.GetComponent<RigidBody>(e1).position.x < 100) {
-		std::cerr << "BOOBS " << std::endl;
 		physics->Update();
 	}
 	EXPECT_EQ(gCoordinator.GetComponent<RigidBody>(e1).position.x, 100);
