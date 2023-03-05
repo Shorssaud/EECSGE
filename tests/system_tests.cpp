@@ -10,6 +10,7 @@ Coordinator gCoordinator;
 class PhysicsSystem : public System {
 public:
 	void Update(void) {
+		std::cerr << "PENIS " << mEntities.size() << std::endl;
 		for (auto const& entity : mEntities) {
 			auto& rigidBody = gCoordinator.GetComponent<RigidBody>(entity);
 			if (rigidBody.hasCollision == false) {
@@ -47,6 +48,7 @@ TEST(Entities, MovementTest) {
 			false
 	});
 	while (gCoordinator.GetComponent<RigidBody>(e1).position.x < 100) {
+		std::cerr << "BOOBS " << std::endl;
 		physics->Update();
 	}
 	EXPECT_EQ(gCoordinator.GetComponent<RigidBody>(e1).position.x, 100);
