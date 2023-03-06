@@ -12,5 +12,5 @@ set(HEADERS
 )
 
 add_library(eecsge-physics STATIC ${HEADERS})
-target_link_libraries(eecsge-physics sfml-system)
+target_link_libraries(eecsge-physics STATIC sfml-system)
 target_include_directories(eecsge-physics PUBLIC include)

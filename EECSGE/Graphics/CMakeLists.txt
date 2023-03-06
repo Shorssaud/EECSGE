@@ -18,5 +18,5 @@ set(HEADERS
 )
 
 add_library(eecsge-graphics STATIC ${SRC} ${HEADERS})
-target_link_libraries(eecsge-graphics eecsge-core eecsge-physics sfml-graphics sfml-system)
+target_link_libraries(eecsge-graphics STATIC eecsge-core eecsge-physics sfml-graphics sfml-system)
 target_include_directories(eecsge-graphics PUBLIC include)
