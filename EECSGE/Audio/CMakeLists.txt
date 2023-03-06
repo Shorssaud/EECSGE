@@ -16,5 +16,5 @@ set(HEADERS
 )
 
 add_library(eecsge-audio STATIC ${SRC} ${HEADERS})
-target_link_libraries(eecsge-audio STATIC eecsge-core sfml-audio)
+target_link_libraries(eecsge-audio eecsge-core sfml-audio)
 target_include_directories(eecsge-audio PUBLIC include)
