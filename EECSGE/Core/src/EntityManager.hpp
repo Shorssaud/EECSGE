@@ -11,6 +11,7 @@ namespace eecsge
 	public:
 		EntityManager()
 		{
+			mLivingEntityCount = 0;
 			for (Entity entity = 0; entity < MAX_ENTITIES; ++entity)
 			{
 				mAvailableEntities.push(entity);
@@ -19,6 +20,8 @@ namespace eecsge
 
 		Entity CreateEntity()
 		{
+			assert(mLivingEntityCount < MAX_ENTITIES && "Too many entities in existence.");
+
 			Entity id = mAvailableEntities.front();
 			mAvailableEntities.pop();
 			++mLivingEntityCount;
@@ -28,6 +31,8 @@ namespace eecsge
 
 		void DestroyEntity(Entity entity)
 		{
+			assert(entity < MAX_ENTITIES && "Entity out of range.");
+
 			mSignatures[entity].reset();
 			mAvailableEntities.push(entity);
 			--mLivingEntityCount;
@@ -35,11 +40,15 @@ namespace eecsge
 
 		void SetSignature(Entity entity, Signature signature)
 		{
+			assert(entity < MAX_ENTITIES && "Entity out of range.");
+
 			mSignatures[entity] = signature;
 		}
 
 		Signature GetSignature(Entity entity)
 		{
+			assert(entity < MAX_ENTITIES && "Entity out of range.");
+
 			return mSignatures[entity];
 		}
 
