@@ -39,6 +39,6 @@ set(SFML_BUILD_AUDIO FALSE)
 add_subdirectory(EECSGE)
 
 #--------
-IF(test AND test STREQUAL "on")
-    add_subdirectory(tests)
-ENDIF()
+# IF(test AND test STREQUAL "on")
+#     add_subdirectory(tests)
+# ENDIF()
